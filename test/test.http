@@ -1,0 +1,28 @@
+
+### GET
+GET http://localhost:5000/api/users
+
+
+### POST
+POST http://localhost:5000/api/users
+Content-Type: application/json
+
+{
+  "name": "Alice2",
+  "email": "alice2@example.com",
+  "role": "Developer"
+}
+
+
+### PUT
+PUT http://localhost:5000/api/users/1cea1885-c9d8-8035-a36a-dcf36bc0a164
+Content-Type: application/json
+
+{
+  "name": "Alice Updated",
+  "email": "alice.new@example.com",
+  "role": "Manager"
+}
+
+### DELETE
+DELETE http://localhost:5000/api/users/1cea1885-c9d8-8035-a36a-dcf36bc0a164
