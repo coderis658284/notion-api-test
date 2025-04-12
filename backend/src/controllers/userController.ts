@@ -2,8 +2,8 @@ import { Request, Response } from 'express';
 import axios from 'axios';
 import dotenv from 'dotenv';
 
-const _token = "token"
-const _db_id = "db_id"
+const _token = "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"
+const _db_id = "1cea1885c9d8807e8022cad51fd26438"
 
 const notion = axios.create({
     baseURL: 'https://api.notion.com/v1',

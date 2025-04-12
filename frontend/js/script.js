@@ -1,4 +1,4 @@
-const apiUrl = "ngrok_url/api/users";
+const apiUrl = "https://clam-proud-likely.ngrok-free.app/api/users";
 
 // Load and display users
 async function loadUsers() {
@@ -27,15 +27,9 @@ async function loadUsers() {
                     <td>${user.name}</td>
                     <td>${user.email}</td>
                     <td>${user.role}</td>
-                    <td>
-                        <button class="btn btn-warning btn-sm" onclick="editUser('${
-                          user.id
-                        }', '${user.name}', '${user.email}', '${
-        user.role
-      }')">Edit</button>
-                        <button class="btn btn-danger btn-sm" onclick="deleteUser('${
-                          user.id
-                        }')">Delete</button>
+                    <td>              
+                        <a class="btn btn-info btn-sm" href="edit.html?id=${user.id}">Edit</a>
+                        <button class="btn btn-danger btn-sm" onclick="deleteUser('${user.id}')">Delete</button>
                     </td>
                 </tr>
             `;
@@ -46,56 +40,50 @@ async function loadUsers() {
 }
 
 // Handle form submission (Create/Update)
-document.getElementById("userForm").onsubmit = async (e) => {
-  e.preventDefault();
+// document.getElementById("userForm").onsubmit = async (e) => {
+//   e.preventDefault();
 
-  const id = document.getElementById("userId").value;
-  const userData = {
-    name: document.getElementById("name").value,
-    email: document.getElementById("email").value,
-    role: document.getElementById("role").value,
-  };
+//   const id = document.getElementById("userId").value;
+//   const userData = {
+//     name: document.getElementById("name").value,
+//     email: document.getElementById("email").value,
+//     role: document.getElementById("role").value,
+//   };
 
-  try {
-    if (id) {
-      await axios.put(`${apiUrl}/${id}`, userData);
-      //alert("Update Successful!");
-      Swal.fire({
-        title: "Update Successful!",
-        icon: "success",
-        draggable: true,
-      });
-    } else {
-      await axios.post(apiUrl, userData);
-      //alert("User Created Successfully!");
-      Swal.fire({
-        title: "User Created Successfully!",
-        icon: "success",
-        draggable: true,
-      });
-    }
+//   try {
+//     if (id) {
+//       await axios.put(`${apiUrl}/${id}`, userData);
+//       //alert("Update Successful!");
+//       Swal.fire({
+//         title: "Update Successful!",
+//         icon: "success",
+//         draggable: true,
+//       });
+//     } else {
+//       await axios.post(apiUrl, userData);
+//       //alert("User Created Successfully!");
+//       Swal.fire({
+//         title: "User Created Successfully!",
+//         icon: "success",
+//         draggable: true,
+//       });
+//     }
 
-    document.getElementById("userForm").reset();
-    document.getElementById("userId").value = "";
-    loadUsers();
-  } catch (error) {
-    //alert(error.response?.data?.error || 'Request failed');
+//     document.getElementById("userForm").reset();
+//     document.getElementById("userId").value = "";
+//     loadUsers();
+//   } catch (error) {
+//     //alert(error.response?.data?.error || 'Request failed');
 
-    Swal.fire({
-      title: error.response?.data?.error || "Request failed",
-      icon: "success",
-      draggable: true,
-    });
-  }
-};
+//     Swal.fire({
+//       title: error.response?.data?.error || "Request failed",
+//       icon: "success",
+//       draggable: true,
+//     });
+//   }
+// };
 
 // Edit user data
-function editUser(id, name, email, role) {
-  document.getElementById("userId").value = id;
-  document.getElementById("name").value = name;
-  document.getElementById("email").value = email;
-  document.getElementById("role").value = role;
-}
 
 // Delete user
 async function deleteAPI() {
