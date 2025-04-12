@@ -1,4 +1,4 @@
-const apiUrl = "https://clam-proud-likely.ngrok-free.app/api/users";
+const apiUrl = "ngrok";
 
 // Load and display users
 async function loadUsers() {
